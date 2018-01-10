@@ -1,0 +1,276 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Hsiutan Hsiao</title>
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+		<meta name="description" content="Hsiutan Hsiao's Portfolio" />
+		<meta name="keywords" content="Hsiutan Hsiao, Interaction Design, Web Design, Interactive Design, SCAD" />
+		<link rel="shortcut icon" href="ImageOther/SmallLogo2.png" type="image/x-icon" />
+		
+		<!--Style Sheets and Javascript-->
+
+		<link rel='stylesheet' type='text/css' href='styles.css'/>
+		<script type="text/javascript" src="http://use.typekit.com/hzk1fud.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="backtotop.js"></script>
+
+
+<!-- ajax message form --------------------->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript">
+
+/*
+	Code by David McKeown
+	www.craftedbydavid.com
+*/
+
+jQuery(document).ready(function ($) { // wait until the document is ready
+	$('#send').click(function(){ // when the button is clicked the code executes
+		$('.error').fadeOut('slow'); // reset the error messages (hides them)
+
+		var error = false; // we will set this true if the form isn't valid
+
+		var name = $('input#name').val(); // get the value of the input field
+		if(name == "" || name == " ") {
+			$('#err-name').fadeIn('slow'); // show the error message
+			error = true; // change the error state to true
+		}
+
+		var email_compare = /^([a-z0-9_.-]+)@([da-z.-]+).([a-z.]{2,6})$/; // Syntax to compare against input
+		var email = $('input#email').val(); // get the value of the input field
+		if (email == "" || email == " ") { // check if the field is empty
+			$('#err-email').fadeIn('slow'); // error - empty
+			error = true;
+		}else if (!email_compare.test(email)) { // if it's not empty check the format against our email_compare variable
+			$('#err-emailvld').fadeIn('slow'); // error - not right format
+			error = true;
+		}
+
+		if(error == true) {
+			$('#err-form').slideDown('slow');
+			return false;
+		}
+
+		var data_string = $('#ajax-form').serialize(); // Collect data from form
+		alert(data_string);
+
+		$.ajax({
+			type: "POST",
+			url: $('#ajax-form').attr('action'),
+			data: data_string,
+			timeout: 6000,
+			error: function(request,error) {
+				if (error == "timeout") {
+					$('#err-timedout').slideDown('slow');
+				}
+				else {
+					$('#err-state').slideDown('slow');
+					$("#err-state").html('An error occurred: ' + error + '');
+				}
+			},
+			success: function() {
+				$('#ajax-form').slideUp('slow');
+				$('#ajaxsuccess').slideDown('slow');
+			}
+		});
+
+		return false; // stops user browser being directed to the php file
+	}); // end click function
+});
+
+</script>
+
+<!----------------------ajax form end------------------------------------------------------------------------>
+
+</head>
+<body>
+
+
+
+<div id="container">
+	<a name="top"></a>
+
+	
+<div id="nametag">
+		<a href="/index.html">
+
+		<img src="ImageOther/WebLogo2.png" alt="cube" width="100" height="115" />
+		<h1>Hsiutan Hsiao
+		</h1>
+		<p id="blurb">Interaction &amp; Interactive Designer
+		</p>
+
+	</a>
+	
+</div>
+	<ul id="menu">
+    <a href="/index.html">
+		<object>
+			<li><h3>Projects</h3></li>
+		</object>
+	</a>
+	<a href="/about.html">
+		<object>
+			<li><h3>About</h3></li>
+		</object>
+	</a>
+	<a href="/resume.html">
+		<object>
+			<li><h3>Resume</h3></li>
+		</object>
+	</a>
+	<a href="/contact.html">
+		<object>
+			<li><h3>Contact</h3></li>
+		</object>
+	</a>
+	<a href="#top">
+		<object>
+			<li id="backtotop"><h3 class="back">To the top!</h3></li>
+		</object>
+	</a>
+	
+	
+</ul>	
+<div id="content">
+<div id="header">
+			<h2>Contact Me
+			</h2>
+		</div>
+		
+		<!--Contact Start-->
+		
+        <!-- Picture-->
+        <img src="ImageOther/yeah.png" alt="New York" width="900" height="342" />
+        <div id="contact">
+			<p>
+			<h5 class="contact">Want To Contact Me ?		    </h5>
+			</p>
+			
+			<p>I like to recevie many presious suggestions or opinions from you. You can use the form on the right or e-mail me at <a href="mailto:hsiaohsiutan@gmail.com">hsiaohsiutan@gmail.com</a> or the following social medias. 
+			</p>
+			</p>
+            
+           
+<span class="social-icons"><span class="contact"><a href="http://www.facebook.com/hsiutan.hsiao" target="new" title="Find me on Facebook"><img src="ImageOther/facebook.png" width="30" height="30" /></a></span></span>
+
+<span class="social-icons"><span class="contact"><a href="http://www.linkedin.com/pub/hsiu-tan-hsiao/49/911/ab5/" target="new" title="Find me on LinkedIn">    <img src="ImageOther/LinkIn.png" width="30" height="30" /></a></span></span>
+
+<span class="social-icons"><span class="contact"><a href="https://vimeo.com/user8096876" target="new" title="Find me on Vimeo">    <img src="ImageOther/Vimeo.png" width="30" height="30" /></a></span></span>
+
+
+</div>
+</div>        
+<div class="social-icons">
+
+        
+ <br /> <br /> 
+ 
+
+      
+ <!-----------------------------ajax form Start----------------------------------------------------------------->
+     
+            <form name="ajax-form" id="ajax-form" action="mail-it.php" method="post">
+        <label for="name">Name:
+            <span class="error" id="err-name">Please enter your name</span></label>
+        <input name="name" id="name" type="text" />
+        <label for="email">EMail:  
+            <span class="error" id="err-email">Please enter your e-mail</span>
+            <span class="error" id="err-emailvld">E-mail is not a valid format</span></label>
+        <input name="email" id="email" type="text" />
+        <label for="message">Message:</label>
+        <textarea name="message" id="message"></textarea>
+        <button id="send">SEND!</button>
+        <div class="error" id="err-form">There was a problem validating the form please check!</div>
+        <div class="error" id="err-timedout">The connection to the server timed out!</div>
+        <div class="error" id="err-state"></div>
+    </form>
+    <div id="ajaxsuccess"><h2>SENT!!</h2></div>
+    
+   
+
+<!------------------------ajax form end---------------------------------->        
+<!----------------------------------------------------------------------------------------------	
+	
+		<form name="input" action="" method="post"> 
+	        <label>
+	           <span>Name:
+	           </span>
+	           <input type="text" name="name" id="name"/>
+	           
+	        </label>
+	        <label>
+	           <span>Email:
+	           </span>
+	           <input type="text" name="email" id="email"/>
+	           
+	        </label>
+	         <label>
+	            <span>Subject:
+	            </span>
+	            <input type="text" name="subject" id="subject"/>
+	            
+	        </label>
+	        <label>
+	            <span>Message:
+	            </span>
+	            <textarea name="feedback" id="feedback">
+	            </textarea>
+	            <input type="submit" class="button" value="Send" />
+	            
+	        </label>
+	          
+	          
+	    </form>
+        
+        ----------------------------------------------------------------------------------------------------------->
+      </div>
+	</div>	
+	<div class="clear">
+	</div>
+
+</div><!-- container ends -->
+
+
+
+	<div id="footer">
+		<div id="menu-wrapper">
+			<ul id="more" class="footermenus">
+				<li><h4>More of Me</h4></li>
+				<li><a href="http://tantanshow.tumblr.com/" target="_blank">Tumblr</a></li>
+				<li><a href="http://www.linkedin.com/pub/hsiu-tan-hsiao/49/911/ab5/" target="_blank">Linked In</a></li>
+                <li><a href="http://www.youtube.com/hsiaohsiutan" target="_blank">YouTube</a></li>
+                <li><a href="https://vimeo.com/user8096876" target="_blank">Vimeo</a></li>
+                
+			</ul>
+	
+			
+			<ul id="inspiration" class="footermenus">
+				<li><h4>Inspiration</h4></li>
+                <li><a href="http://www.awwwards.com/awards-of-the-day" target="_blank">awwwards</a></li>
+				<li><a href="http://dma.ucla.edu/" target="_blank">UCLA DESIGN Media Arts</a></li>
+				<li><a href="http://www.sagmeister.com/" target="_blank">Stefan Sagmeister</a></li>
+				<li><a href="http://www.ted.com/" target="_blank">TED</a></li>
+			</ul>
+            
+            <ul id="friends" class="footermenus">
+			<li><h4>Design Blog</h4></li>
+				<li><a href="http://design-milk.com/" target="_blank">Design-Milk</a></li>
+				<li><a href="http://www.dezeen.com/" target="_blank">Dezeen</a></li>
+				<li><a href="http://joanneong.net/" target="_blank">Joanne Ong</a></li>
+				<li><a href="http://laurenbeckwith.net/" target="_blank">Lauren Beckwith</a></li>
+			</ul>
+     
+		</div>
+</div>
+	
+<div id="copyright">
+	<p>Hsiutan Hsiao 2013 All Rights Reserved.
+	</p>
+</div>
+</body> 
+</html>
